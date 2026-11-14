@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENJAZAT · Company Profile 2026</title>
+<style>
+@font-face{font-family:Readex;src:url(fonts/readex-pro-latin-300-normal.woff2) format('woff2');font-weight:300}
+@font-face{font-family:Readex;src:url(fonts/readex-pro-latin-400-normal.woff2) format('woff2');font-weight:400}
+@font-face{font-family:Readex;src:url(fonts/readex-pro-latin-500-normal.woff2) format('woff2');font-weight:500}
+@font-face{font-family:Readex;src:url(fonts/readex-pro-latin-600-normal.woff2) format('woff2');font-weight:600}
+@font-face{font-family:Readex;src:url(fonts/readex-pro-arabic-300-normal.woff2) format('woff2');font-weight:300;unicode-range:U+0600-06FF,U+FE70-FEFF}
+@font-face{font-family:Readex;src:url(fonts/readex-pro-arabic-400-normal.woff2) format('woff2');font-weight:400;unicode-range:U+0600-06FF,U+FE70-FEFF}
+@font-face{font-family:Mono;src:url(fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+:root{--gold:#D5A768}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 Readex,system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#0E0F11;color:#F2EEE7;transition:background .8s,color .8s}
+h1,h2,h3{font-weight:300;margin:0;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+img{display:block}
+.mono{font-family:Mono,ui-monospace,monospace}
+.eb{font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:600}
+.ar{font-family:Readex}
+/* ---------- top bar ---------- */
+.bar{position:fixed;inset:0 0 auto 0;height:72px;z-index:50;display:flex;align-items:center;gap:28px;padding:0 4vw;transition:background .6s,color .6s;color:#F2EEE7}
+.bar.solid{background:rgba(14,15,17,.72);backdrop-filter:blur(14px)}
+body.noon .bar.solid{background:rgba(250,250,248,.86);color:#16181B}
+.bar .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.bar .logo img{height:34px}.bar .logo .wm{height:16px}
+body.noon .bar .logo img{filter:invert(1) brightness(.2)}
+.bar .sp{flex:1}
+.bar nav{display:flex;gap:6px}
+.bar nav a{color:inherit;opacity:.65;text-decoration:none;font-size:13px;padding:8px 14px;border-radius:999px;border:1px solid transparent;transition:opacity .3s,border-color .3s}
+.bar nav a:hover{opacity:1}
+.bar nav a.on{opacity:1;border-color:currentColor}
+.clock{font-family:Mono;font-size:13px;min-width:120px;text-align:right;letter-spacing:.06em}
+.clock i{display:inline-block;width:8px;height:8px;border-radius:999px;margin-right:8px;vertical-align:1px;background:var(--sun,#D5A768)}
+.draft{font-size:10px;letter-spacing:.18em;border:1px solid #E8B04A;color:#E8B04A;padding:3px 8px;border-radius:999px}
+/* ---------- screens ---------- */
+.scr{position:relative;min-height:100vh;overflow:hidden}
+.pad{padding:140px 6vw 100px;max-width:1600px;margin:0 auto}
+.full{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cap{position:absolute;left:0;bottom:0;font-size:12px;padding:8px 12px;background:rgba(20,14,8,.78);color:#FBEFDF;letter-spacing:.02em}
+.dp{position:absolute;left:14px;top:14px;font-size:10px;letter-spacing:.2em;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(20,14,8,.82);border:1px solid #F5C27A;color:#F5C27A}
+.ph{position:relative;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.ph:hover img{transform:scale(1.04)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+/* ---------- ARRIVAL ---------- */
+#arrival{height:100vh;display:flex;background:#0E0F11}
+.door{position:relative;flex:1;overflow:hidden;transition:flex 1s cubic-bezier(.2,.7,.2,1);text-decoration:none;color:inherit}
+#arrival:hover .door{flex:.8}
+#arrival .door:hover{flex:1.6}
+.door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.door:hover img{transform:scale(1)}
+.door .veil{position:absolute;inset:0}
+.door .lab{position:absolute;left:40px;right:40px;bottom:64px}
+.door .t{font-family:Mono;font-size:13px;letter-spacing:.1em}
+.door h2{font-size:clamp(28px,2.6vw,44px);line-height:1.08;margin:12px 0 6px}
+.door .arn{font-size:22px;display:inline-block}
+.door .pr{margin-top:12px;font-size:16px;opacity:.9}
+.door .go{margin-top:22px;display:inline-flex;gap:10px;align-items:center;font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.5s}
+.door:hover .go{opacity:1;transform:none}
+.dGold img{filter:sepia(.3) saturate(1.15) brightness(.92)}
+.dGold .veil{background:linear-gradient(200deg,rgba(255,170,80,.25),rgba(43,26,14,.92) 78%)}
+.dNoon{color:#16181B}
+.dNoon img{filter:brightness(1.2) contrast(1.1) saturate(.85)}
+.dNoon .veil{background:linear-gradient(180deg,rgba(255,255,255,0) 35%,rgba(250,250,248,.96) 80%)}
+.dNight{color:#E8EEF5}
+.dNight img{filter:brightness(.5) saturate(.6) contrast(1.2)}
+.dNight .veil{background:linear-gradient(180deg,rgba(10,18,38,.5),rgba(6,10,22,.95) 80%)}
+.arrMid{position:absolute;left:0;right:0;top:64px;z-index:5;text-align:center;pointer-events:none;background:linear-gradient(180deg,rgba(14,15,17,.9) 0%,rgba(14,15,17,.62) 100%);backdrop-filter:blur(8px);padding:24px 0 20px;border-bottom:1px solid rgba(213,167,104,.55)}
+.arrMid img{height:170px;margin:0 auto;filter:drop-shadow(0 6px 30px rgba(0,0,0,.5))}
+.arrMid .s{margin-top:16px;font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:#F2EEE7;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:6;font-size:12px;letter-spacing:.24em;color:#D9D3C9;text-transform:uppercase}
+/* ---------- LOBBY ---------- */
+.lobby{background:#121316;color:#F2EEE7}
+.who{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:center}
+.who h1{font-size:clamp(40px,4.4vw,72px);line-height:1.04;margin:22px 0 28px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px}
+.facts div{border-top:1px solid #34373D;padding-top:16px}
+.facts b{display:block;font-size:46px;font-weight:300;color:var(--gold);line-height:1}
+.facts span{font-size:14px;color:#A9A49B}
+.vm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px}
+.vm p.big{font-size:clamp(22px,2vw,30px);line-height:1.45;font-weight:300}
+/* the day arc */
+.arcWrap{position:relative;margin-top:60px}
+.arc{width:100%;height:auto;display:block}
+.arcLab{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:-10px}
+.arcLab a{text-decoration:none;color:inherit;display:block;padding:28px;border-top:3px solid;background:#17181B;transition:transform .4s}
+.arcLab a:hover{transform:translateY(-6px)}
+.arcLab h3{font-size:28px;margin:10px 0 6px}
+.arcLab p{color:#B9B3A9;font-size:15px}
+/* ---------- GOLDEN HOUR ---------- */
+.gold{background:#1E130A;color:#FBEFDF}
+.gold .mu{color:#D2BFA6}
+.gold img.g{filter:sepia(.22) saturate(1.12) contrast(1.03)}
+.sunlines{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(118deg,rgba(245,194,122,0) 0 140px,rgba(245,194,122,.07) 140px 141px)}
+.glow{position:absolute;width:900px;height:900px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,176,90,.35),rgba(255,176,90,0) 62%);left:var(--sx,70%);top:var(--sy,10%);transform:translate(-50%,-50%);mix-blend-mode:screen;transition:left .2s linear,top .2s linear}
+.opener .veil{position:absolute;inset:0;background:linear-gradient(95deg,rgba(30,19,10,.95) 0%,rgba(30,19,10,.72) 38%,rgba(30,19,10,0) 70%)}
+.opener .in{position:relative;z-index:2;padding:0 6vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:860px}
+.opener h2{font-size:clamp(52px,6.4vw,110px);line-height:.98;margin:20px 0 16px}
+.opener .arn{font-size:clamp(26px,2.4vw,38px);margin-bottom:26px;display:inline-block;align-self:flex-start}
+.opener .pr{font-size:22px;font-weight:300;max-width:560px}
+.opener .t{font-family:Mono;font-size:14px;letter-spacing:.1em}
+.chapter{display:flex;align-items:baseline;gap:18px;margin-bottom:26px}
+.chapter .n{font-family:Mono;font-size:13px;color:#F5C27A}
+.chapter h3{font-size:clamp(34px,3.2vw,52px);line-height:1.05}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.txt{font-size:18px;line-height:1.7;font-weight:300}
+.svcs{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.svcs span{font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid rgba(245,194,122,.45);color:#F5C27A}
+.slider{position:relative;height:72vh;overflow:hidden;cursor:ew-resize;user-select:none}
+.slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slider .top{position:absolute;inset:0;clip-path:inset(0 0 0 var(--cut,50%))}
+.slider .handle{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;background:#F5C27A}
+.slider .handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;border-radius:50%;transform:translate(-50%,-50%);border:2px solid #F5C27A;background:rgba(30,19,10,.6)}
+.brandwall{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:rgba(245,194,122,.2);margin-top:36px}
+.brandwall div{background:#1E130A;height:110px;display:flex;align-items:center;justify-content:center;font-size:20px;letter-spacing:.06em;color:#E9D6BC;font-weight:400}
+/* ---------- NOON / NIGHT openers ---------- */
+.noonOp{background:#FAFAF8;color:#16181B}
+.noonOp img{filter:brightness(1.18) contrast(1.12) saturate(.85)}
+.noonOp .veil{position:absolute;inset:0;background:linear-gradient(95deg,rgba(250,250,248,.98) 0%,rgba(250,250,248,.94) 46%,rgba(250,250,248,.2) 74%,rgba(250,250,248,0) 85%)}
+.noonOp .t{color:#B5442A}
+.sunMark{position:absolute;right:12vw;top:16vh;width:120px;height:120px;border:1.5px solid #C0392B;border-radius:50%;z-index:2}
+.sunMark::before,.sunMark::after{content:"";position:absolute;background:#C0392B}
+.sunMark::before{left:50%;top:-40px;bottom:-40px;width:1.5px}
+.sunMark::after{top:50%;left:-40px;right:-40px;height:1.5px}
+.nightOp{background:#060A16;color:#E8EEF5}
+.nightOp img{filter:brightness(.42) saturate(.55) contrast(1.25)}
+.nightOp .veil{position:absolute;inset:0;background:linear-gradient(95deg,rgba(6,10,22,.97) 0%,rgba(6,10,22,.8) 40%,rgba(6,10,22,.15) 75%)}
+.nightOp .t{color:#F0A040}
+.stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(1.5px 1.5px at 20% 18%,#9CC3FF,transparent),radial-gradient(1.2px 1.2px at 62% 12%,#9CC3FF,transparent),radial-gradient(1.6px 1.6px at 82% 26%,#9CC3FF,transparent),radial-gradient(1px 1px at 44% 30%,#9CC3FF,transparent),radial-gradient(1.4px 1.4px at 90% 8%,#9CC3FF,transparent)}
+.soon{display:inline-block;margin-top:30px;font-size:12px;letter-spacing:.2em;padding:6px 12px;border-radius:999px;border:1px dashed currentColor;opacity:.75}
+footer{padding:50px 6vw;background:#0E0F11;color:#A9A49B;font-size:12px}
+@media (max-width:900px){#arrival{flex-direction:column}.who,.vm,.arcLab{grid-template-columns:1fr}.g12>*{grid-column:1/-1!important}.brandwall{grid-template-columns:repeat(2,minmax(0,1fr))}.bar nav{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+
+/* ---------- NOON wing ---------- */
+.noonW{background:#FAFAF8;color:#16181B}
+.noonW .chapter .n{color:#B5442A}
+.note{font-size:13px;color:#7A7F86;margin-top:14px}
+.readout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#D9DCDF;margin-top:30px;border:1px solid #D9DCDF}
+.readout div{background:#fff;padding:18px}
+.readout span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4A4F57}
+.readout b{display:block;font-family:Mono;font-weight:400;font-size:40px;color:#B5442A;line-height:1.2}
+.readout div+div b{color:#16181B}
+.heat{position:relative;background:#fff;border:1px solid #D9DCDF;padding:0 0 0;user-select:none;cursor:ew-resize;overflow:hidden}
+.heat .sky{position:relative;height:200px;background:linear-gradient(180deg,#F4F6F8,#fff)}
+.sunDot{position:absolute;top:40px;left:var(--sun,50%);width:56px;height:56px;margin-left:-28px;border-radius:50%;background:radial-gradient(circle,#FFD27A 0 40%,#F2A33A 41% 60%,rgba(242,163,58,0) 61%);box-shadow:0 0 60px rgba(242,163,58,.6)}
+.rays{position:absolute;left:0;right:0;top:100px;height:100px;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(181,68,42,0) 0 22px,rgba(181,68,42,.35) 22px 24px);opacity:var(--heat,.6);-webkit-mask:linear-gradient(180deg,transparent,#000);mask:linear-gradient(180deg,transparent,#000)}
+.lay{position:relative;display:flex;align-items:center;padding:0 18px;font-size:13px;color:#16181B;transition:transform .5s}
+.heat:hover .lay:nth-child(odd){transform:translateX(14px)}
+.lay span{white-space:nowrap}
+.room{height:90px;background:repeating-linear-gradient(90deg,#fff 0 80px,#F4F6F8 80px 81px);display:flex;align-items:center;justify-content:center;font-size:13px;color:#4A4F57;letter-spacing:.08em}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{font:inherit;font-size:14px;padding:10px 18px;border-radius:999px;border:1px solid #D9DCDF;background:#fff;color:#16181B;cursor:pointer;min-height:44px}
+.tabs button.on{background:#16181B;color:#fff;border-color:#16181B}
+.sys{display:grid;grid-template-columns:7fr 5fr;gap:40px;align-items:stretch}
+.sysL{background:#fff;border:1px solid #D9DCDF;padding:40px 30px;display:flex;flex-direction:column;justify-content:center;min-height:52vh}
+.sysL .l{display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:13px;animation:drop .6s both}
+.sysL .l:nth-child(2){animation-delay:.08s}.sysL .l:nth-child(3){animation-delay:.16s}.sysL .l:nth-child(4){animation-delay:.24s}.sysL .l:nth-child(5){animation-delay:.32s}
+@keyframes drop{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.sysR h4{font-size:34px;font-weight:300;margin:0 0 14px}
+.sysR p{font-size:18px;line-height:1.7;color:#4A4F57;font-weight:300}
+.proof,.where{border-top:1px solid #D9DCDF;margin-top:22px;padding-top:14px}
+.proof span,.where span{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#B5442A}
+.proof b,.where b{font-weight:400;font-size:16px}
+.places{display:flex;flex-direction:column}
+.places div{border-top:1px solid #D9DCDF;padding:16px 0}
+.places b{display:block;font-weight:500;font-size:17px}
+.places span{color:#4A4F57;font-size:15px}
+.bw2{background:#D9DCDF}.bw2 div{background:#FAFAF8;color:#16181B;flex-direction:column;gap:6px}
+.bw2 em{font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#B5442A}
+/* ---------- NIGHT wing ---------- */
+.nightW{background:#060A16;color:#E8EEF5}
+.map{position:relative;height:420px;margin-top:30px;border:1px solid #1C2744;background:#0A1124;background-image:radial-gradient(#1C2744 1px,transparent 1px);background-size:24px 24px}
+.mapLines{position:absolute;inset:0;width:100%;height:100%}
+.node{position:absolute;transform:translate(-50%,-50%);font:inherit;font-size:14px;color:#E8EEF5;background:#0E1730;border:1px solid #2B3B66;padding:12px 18px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;transition:border-color .3s,box-shadow .3s}
+.node i{width:9px;height:9px;border-radius:50%;background:#2B3B66;transition:background .3s,box-shadow .3s}
+.node.on,.node:hover{border-color:#F0A040}
+.node.on i{background:#F0A040;box-shadow:0 0 14px #F0A040}
+.nodeInfo{margin-top:22px;border-left:2px solid #F0A040;padding:6px 0 6px 22px;max-width:820px}
+.nodeInfo h4{margin:0 0 6px;font-weight:500;font-size:20px}
+.nodeInfo p{color:#B7C3D6}
+.stages{list-style:none;margin:0;padding:0;counter-reset:s}
+.stages li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:4px 0;border-top:1px solid #1C2744;padding:16px 0}
+.stages li::before{content:"0" counter(s);grid-row:span 2;font-family:Mono;color:#F0A040;font-size:13px;padding-top:4px}
+.stages b{font-weight:500;font-size:18px}
+.stages span{color:#9AA8C0;font-size:15px}
+.topo{background:#0A1124;border:1px solid #1C2744;padding:20px}
+.cards{display:flex;flex-direction:column}
+.cards div{border-top:1px solid #1C2744;padding:16px 0}
+.cards b{display:block;font-weight:500;font-size:17px}
+.cards span{color:#9AA8C0;font-size:15px}
+.board{background:#0A1124;border:1px solid #1C2744;padding:22px;font-size:14px}
+.bh{display:flex;justify-content:space-between;font-family:Mono;font-size:12px;letter-spacing:.14em;color:#9AA8C0;margin-bottom:12px}
+.bh em{font-style:normal;color:#E8B04A;border:1px solid #E8B04A;border-radius:999px;padding:1px 8px}
+.row{display:grid;grid-template-columns:90px 1fr auto;gap:12px;padding:11px 0;border-top:1px solid #1C2744;align-items:center}
+.row span:first-child{font-family:Mono;font-size:12px;color:#9AA8C0}
+.row b{font-weight:500;font-size:12px;padding:3px 10px;border-radius:999px}
+.ok{background:rgba(93,187,138,.15);color:#5DBB8A}.run{background:rgba(240,160,64,.15);color:#F0A040}.due{background:rgba(156,195,255,.12);color:#9CC3FF}
+.flow{display:flex;gap:6px;margin-top:16px}
+.flow span{flex:1;text-align:center;font-size:11px;letter-spacing:.08em;padding:8px 0;border:1px solid #2B3B66;color:#B7C3D6}
+.bw3{background:#1C2744}.bw3 div{background:#060A16;color:#C9D4E6;font-size:17px}
+/* ---------- PROOF ---------- */
+.band{display:grid;grid-template-columns:260px 1fr;margin-top:34px;border:1px solid #34373D}
+.band .bl{padding:18px;background:#1B1D21;color:var(--gold);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.band .bt{padding:18px;color:#D9D3C9}
+.logos{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:10px;margin-top:22px}
+.logos div{background:#F2EEE7;height:104px;display:flex;align-items:center;justify-content:center;padding:16px 20px;border-radius:2px}
+.logos img{max-width:100%;max-height:100%;object-fit:contain}
+.names{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.names span{background:#1B1D21;border:1px solid #34373D;padding:12px 18px;font-size:15px;color:#E6E0D6;border-radius:2px}
+.iso{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.iso div{border:1px solid #34373D;background:#1B1D21;padding:30px}
+.iso b{display:block;font-size:34px;font-weight:300;color:var(--gold)}
+.iso span{color:#A9A49B}
+.qgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:30px}
+.qgrid div{border-top:2px solid var(--gold);padding-top:16px}
+.qgrid b{display:block;font-weight:500;font-size:18px}
+.qgrid span{color:#A9A49B;font-size:15px}
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin-top:34px;max-width:820px}
+.contact div{border-top:1px solid rgba(242,238,231,.18);padding:14px 0}
+.contact span{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#A9A49B}
+.contact b{font-weight:400;font-size:20px}
+.ph8{color:#E8B04A}
+@media (max-width:900px){.sys,.band{grid-template-columns:1fr}.logos{grid-template-columns:repeat(3,minmax(0,1fr))}.iso,.qgrid{grid-template-columns:1fr}.map{height:520px}}
+.brandwall div{position:relative}
+.brandwall img{max-width:74%;max-height:58px;object-fit:contain}
+.brandwall div:not(.bt){background:#F4ECDF}
+.brandwall em{position:absolute;bottom:9px;left:0;right:0;text-align:center;font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8A6A44}
+.bw2 div:not(.bt){background:#FFFFFF}.bw2 em{color:#B5442A}
+.bw3 div:not(.bt){background:#EEF1F6}.bw3 em{color:#3B4A6B}
+.brandwall .bt{background:#EEF1F6;color:#1C2744}.brandwall .bt span{font-size:22px;letter-spacing:.04em;font-weight:600}
+.logos{display:flex!important;flex-wrap:wrap;justify-content:center}.logos div{width:calc((100% - 70px)/8)}
+@media (max-width:900px){.logos div{width:calc((100% - 20px)/3)}}
+#cover{position:relative;height:100vh;overflow:hidden;background:#0E0F11}
+#cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1.04);animation:cvz 18s ease-out forwards}
+@keyframes cvz{to{transform:scale(1)}}
+#cover .veil{position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 48%,rgba(14,15,17,.55),rgba(14,15,17,.3) 60%,rgba(14,15,17,.75) 100%),linear-gradient(180deg,rgba(14,15,17,.45),rgba(14,15,17,.1) 40%,rgba(14,15,17,.85))}
+#cover .in{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:40px}
+#cover .brand img{height:min(40vh,380px);display:block;margin:0 auto;filter:drop-shadow(0 10px 40px rgba(0,0,0,.55))}
+#cover .sl{margin-top:26px;font-size:16px;letter-spacing:.5em;text-transform:uppercase;color:#F2EEE7}
+#cover .sla{margin-top:10px;font-size:24px;color:#D5A768}
+#cover .meta{margin-top:34px;color:#CFC9BF;font-size:15px;line-height:1.7}
+#cover .meta b{display:block;color:#F2EEE7;font-weight:300;font-size:clamp(22px,2vw,30px);line-height:1.25;margin-bottom:8px}
+#cover .credit{position:absolute;right:18px;bottom:12px;z-index:2;font:10px/1.2 monospace;letter-spacing:.08em;color:rgba(242,238,231,.55)}
+#cover .down{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#A9A49B}
+@media (max-width:900px){#cover .brand img{height:30vh}}
+.studio-note{color:#B9A58A;font-size:14px;letter-spacing:.04em;margin:-6px 0 22px}
+.folio{position:absolute;left:3vw;right:3vw;bottom:14px;z-index:4;display:flex;align-items:center;gap:12px;font:11px/1 Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,238,231,.55);pointer-events:none}
+.folio img{height:20px}.folio .sp{flex:1;height:1px;background:currentColor;opacity:.35}
+.noonW .folio,.noonOp .folio{color:rgba(22,24,27,.55)}.noonW .folio img,.noonOp .folio img{filter:brightness(0)}
+.wmk{position:absolute;right:-3vw;bottom:-8vh;height:112vh;max-height:1100px;opacity:.045;pointer-events:none;z-index:0}
+.noonW .wmk{filter:brightness(0);opacity:.03}
+.scr>.pad,.scr>.in{position:relative;z-index:1}
+.imgcredit{position:absolute;right:18px;bottom:40px;z-index:3;font:10px/1.2 monospace;letter-spacing:.08em;color:rgba(242,238,231,.6)}
+.bld{margin-top:26px;position:relative}
+.bld svg{width:100%;height:auto;display:block;max-height:64vh;margin:0 auto}
+.bld .lay{opacity:.08;transition:opacity .7s}
+.bld .lay.on{opacity:1;filter:url(#glw)}
+.bld.all .lay{opacity:.35}.bld.all .lay.on{opacity:1}
+.flow{stroke-dasharray:6 8;animation:flow 1.6s linear infinite}.flow.rev{animation-direction:reverse}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.tick{opacity:0}.lay.on .tick{animation:tick .5s forwards}
+@keyframes tick{to{opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chips button{background:#0B1328;border:1px solid #26324F;color:#B7C3D6;font:inherit;font-size:14px;padding:9px 16px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.chips button i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.chips button.on{border-color:#F0A040;color:#F2EEE7;background:#13203F}
+.prog{height:2px;background:#1A2544;margin-top:14px}.prog span{display:block;height:100%;width:0;background:#F0A040}
+.itplan svg{width:100%;height:auto;display:block;background:#060A16;border:1px solid #1A2544}
+.itplan .flay{opacity:.12;transition:opacity .6s}.itplan .flay.on{opacity:1}
+.itplan.all .flay{opacity:.9}
+.itlegend{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;font-size:12px;color:#8A97B4}
+.itlegend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.itcards button{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:transparent;border:1px solid #1A2544;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:all .3s}
+.itcards button b{display:block;color:#E8EEF5;font-weight:500;margin-bottom:4px}.itcards button span{color:#8A97B4;font-size:14px}
+.itcards button.on{border-color:#F0A040;background:#0E1730}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}}
+.facts3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid #DADDE1;padding-top:16px}.facts3 b{display:block;font-size:30px;font-weight:300;color:#B5442A;line-height:1.1}.facts3 span{font-size:13px;color:#4A4F57}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="logo" href="#arrival"><img src="img/enjazat-mark-ivory.svg" alt="Enjazat"><img class="wm" src="img/enjazat-wordmark-ivory.svg" alt="ENJAZAT"></a>
+  <span class="sp"></span>
+  <nav><a href="#lobby" data-w="lobby">Who we are</a><a href="#gold" data-w="gold">Golden Hour · Fit-Out</a><a href="#noon" data-w="noon">Noon · Specialist</a><a href="#night" data-w="night">Night · Engineering</a><a href="#clients" data-w="proof">Clients</a></nav>
+  <div class="clock" id="clock" aria-live="off"><i></i><span>— : —</span></div>
+</header>
+
+<!-- ============ ARRIVAL ============ -->
+<section id="cover" class="scr" data-w="arrival" data-time="Makkah · 2007–2026">
+  <img src="img/SL08.jpg" alt="Workplace lounge with green arched niches">
+  <div class="veil"></div>
+  <div class="in">
+    <div class="brand"><img src="img/enjazat-brand-ivory.svg" alt="ENJAZAT"><div class="sl">Build · Enhance · Sustain</div><div class="sla ar" dir="rtl">نبني • نطوّر • نستديم</div></div>
+    <div class="meta"><b>Spaces that work, from first sketch to the night shift.</b>Company profile 2026 · Makkah, Kingdom of Saudi Arabia</div>
+  </div>
+  <div class="down">Scroll</div>
+  <div class="credit">Design proposal</div>
+</section>
+
+<section id="arrival" class="scr" data-w="arrival" data-time="Makkah · 2007–2026">
+  <a class="door dGold" href="#gold"><img src="img/F09.jpg" alt="Timber lattice ceiling, finished"><div class="veil"></div>
+    <div class="lab"><div class="t" style="color:#F5C27A">05:40 PM · GOLDEN HOUR</div><h2>Renovation<br>&amp; Fit-Out</h2><div class="arn ar" dir="rtl">التجديد والتشطيب</div><div class="pr">Spaces that glow.</div><div class="go" style="color:#F5C27A">Enter the wing →</div></div></a>
+  <a class="door dNoon" href="#noon"><img src="img/S05.jpg" alt="Airfield marking, finished"><div class="veil"></div>
+    <div class="lab"><div class="t" style="color:#B5442A">12:00 PM · NOON</div><h2>Specialist<br>Solutions</h2><div class="arn ar" dir="rtl">الحلول المتخصصة</div><div class="pr">Built for the hardest hour.</div><div class="go" style="color:#B5442A">Enter the wing →</div></div></a>
+  <a class="door dNight" href="#night"><img src="img/M04.jpg" alt="Parking level signage, maintained"><div class="veil"></div>
+    <div class="lab"><div class="t" style="color:#F0A040">02:00 AM · NIGHT</div><h2>Engineering<br>Solutions</h2><div class="arn ar" dir="rtl">الحلول الهندسية</div><div class="pr">Still running at 2 a.m.</div><div class="go" style="color:#F0A040">Enter the wing →</div></div></a>
+  <div class="arrMid"><img src="img/enjazat-brand-ivory.svg" alt="ENJAZAT"><div class="s">Build · Enhance · Sustain</div></div>
+  <div class="hint">Choose your hour, or scroll</div>
+</section>
+
+<!-- ============ LOBBY ============ -->
+<section id="lobby" class="scr lobby" data-w="lobby" data-time="Makkah · since 2007">
+  <div class="pad who">
+    <div class="reveal">
+      <div class="eb" style="color:var(--gold)">Who we are</div>
+      <h1>One accountable team, around the clock.</h1>
+      <p class="txt" style="color:#CFC9BF">Enjazat Al Mamlakah for General Contracting was founded in Makkah in 2007. We finish the spaces where the Kingdom works and gathers, protect buildings against its harshest hours, and keep their systems running through the night, under one contract and one promise.</p>
+      <div class="facts"><div><b>2007</b><span>Founded in Makkah</span></div><div><b>3</b><span>Specialities, one team</span></div><div><b>ISO</b><span>9001 · 14001 · 45001</span></div></div>
+    </div>
+    <div class="ph reveal" style="height:76vh"><img src="img/SL18.jpg" alt="Workplace lounge with warm timber and pendant light" style="object-position:62% center"><div class="cap">Workplace lounge · design proposal</div></div>
+  </div>
+</section>
+
+<section class="scr lobby wm" data-w="lobby" data-time="Vision 2030" style="min-height:auto;padding-bottom:72px">
+  <div class="pad">
+    <div class="vm reveal">
+      <div><div class="eb" style="color:var(--gold)">Vision</div><p class="big" style="margin-top:20px">To be the Saudi partner that builds, enhances and sustains the places where the Kingdom works, lives and welcomes the world, so that every building we touch serves its owner longer, runs more efficiently and is ready for Vision 2030.</p></div>
+      <div><div class="eb" style="color:var(--gold)">Mission</div><p class="big" style="margin-top:20px;color:#CFC9BF">From Makkah since 2007, we make buildings better places to work, live and visit. Our specialities deliver as one accountable team: approved details before we start, systems that save energy and water, tests before handover, and maintenance long after it.</p></div>
+    </div>
+    <div class="arcWrap reveal">
+      <svg class="arc" viewBox="0 0 1200 260" aria-hidden="true">
+        <defs><linearGradient id="sky" x1="0" x2="1"><stop offset="0" stop-color="#F5C27A"/><stop offset=".5" stop-color="#FAFAF8"/><stop offset="1" stop-color="#3B5BA8"/></linearGradient></defs>
+        <path d="M40 240 Q600 -120 1160 240" fill="none" stroke="url(#sky)" stroke-width="2"/>
+        <path d="M0 240H1200" stroke="#34373D"/>
+        <circle cx="220" cy="128" r="14" fill="#F5C27A"/><circle cx="600" cy="62" r="18" fill="#FAFAF8" stroke="#C0392B" stroke-width="2"/><circle cx="980" cy="128" r="12" fill="#0E1730" stroke="#F0A040" stroke-width="2"/>
+        <text x="220" y="96" fill="#F5C27A" font-family="monospace" font-size="14" text-anchor="middle">05:40 PM</text>
+        <text x="600" y="24" fill="#FAFAF8" font-family="monospace" font-size="14" text-anchor="middle">12:00 PM</text>
+        <text x="980" y="96" fill="#F0A040" font-family="monospace" font-size="14" text-anchor="middle">02:00 AM</text>
+      </svg>
+      <div class="arcLab">
+        <a href="#gold" style="border-color:#F5C27A"><div class="eb" style="color:#F5C27A">Build</div><h3>Renovation &amp; Fit-Out</h3><p>Offices, hospitality, showrooms, joinery, ceilings, glass and finishes, designed and delivered turnkey.</p></a>
+        <a href="#noon" style="border-color:#E6E8EB"><div class="eb" style="color:#E6E8EB">Enhance</div><h3>Specialist Solutions</h3><p>Insulation, waterproofing, concrete repair, coatings, line marking and paving that protect the building.</p></a>
+        <a href="#night" style="border-color:#F0A040"><div class="eb" style="color:#F0A040">Sustain</div><h3>Engineering Solutions</h3><p>Engineering &amp; project management, building services, IT &amp; low-current systems and facility management.</p></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOLDEN HOUR ============ -->
+<section id="gold" class="scr gold opener" data-w="gold" data-time="05:12 PM">
+  <img class="full g" src="img/A82.jpg" alt="Café lounge with olive tree and full-height glazing" style="object-position:65% center"><div class="veil"></div><div class="sunlines"></div><div class="glow"></div><div class="imgcredit">Image: ATQ Interiors, UAE</div>
+  <div class="in">
+    <div class="t" style="color:#F5C27A">05:12 PM · GOLDEN HOUR</div>
+    <h2>Renovation<br>&amp; Fit-Out</h2>
+    <div class="arn ar" dir="rtl">التجديد والتشطيب · الأصيل</div>
+    <p class="pr">From bare shell to a space that glows: strip-out, civil works, partitions, ceilings, joinery, services and finishes under one contract, handed over with a signed certificate.</p>
+    <div class="svcs"><span>Offices &amp; workplaces</span><span>Hospitality &amp; retail</span><span>Showrooms</span><span>Joinery &amp; ceilings</span><span>Glass &amp; partitions</span><span>Design &amp; 3D</span><span>Turnkey furniture</span></div>
+  </div>
+</section>
+
+<section class="scr gold" data-w="gold" data-time="05:24 PM"><div class="sunlines"></div><div class="glow"></div>
+  <div class="pad">
+    <div class="chapter reveal"><span class="n">A·01</span><h3>Workplaces that people want to come back to.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 8;height:62vh"><img class="g" src="img/F22.jpg" alt="Open-plan workstations and breakout lounge, finished"><div class="cap">Open-plan workstations &amp; breakout lounge · finished</div></div>
+      <div style="grid-column:span 4;display:flex;flex-direction:column;gap:18px">
+        <div class="ph reveal" style="height:calc(31vh - 9px)"><img class="g" src="img/F05.jpg" alt="Reception"><div class="cap">Reception &amp; glass partitions · finished</div></div>
+        <div class="ph reveal" style="height:calc(31vh - 9px)"><img class="g" src="img/F18.jpg" alt="Glass office"><div class="cap">Frameless glass office · finished</div></div>
+      </div>
+      <div class="reveal" style="grid-column:span 7;padding-top:24px"><p class="txt mu">We plan each floor with the client, coordinate everything above the ceiling, and hand over a space that is ready for the first working day: furniture placed, systems tested, snag list closed.</p></div>
+      <div class="ph reveal" style="grid-column:span 5;height:34vh"><img class="g" src="img/F15.jpg" alt="Corridor"><div class="cap">Corridor &amp; runner carpet · finished</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr gold" data-w="gold" data-time="05:36 PM"><div class="sunlines"></div><div class="glow"></div>
+  <div class="pad">
+    <div class="chapter reveal"><span class="n">A·02</span><h3>Hospitality &amp; retail.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 7;height:72vh"><img class="g" src="img/F21.jpg" alt="Café and retail unit"><div class="cap">Café &amp; retail unit · finished</div></div>
+      <div class="reveal" style="grid-column:span 5;align-self:end;padding:0 0 12px 12px"><p class="txt mu">Cafés, showrooms and hotel lounges where the space sells the brand, built around opening dates that cannot move. More hospitality and showroom schemes from our studio follow in the next chapter.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr gold" data-w="gold" data-time="05:48 PM"><div class="sunlines"></div><div class="glow"></div>
+  <div class="pad">
+    <div class="chapter reveal"><span class="n">A·03</span><h3>Craft in the details.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 7;height:66vh"><img class="g" src="img/F08.jpg" alt="Lounge with lattice ceiling"><div class="cap">Lounge · timber lattice ceiling · finished</div></div>
+      <div class="ph reveal" style="grid-column:span 5;height:66vh"><img class="g" src="img/F23.jpg" alt="Glazed entrance and timber reception, finished"><div class="cap">Glazed entrance &amp; timber reception · finished</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:34vh"><img class="g" src="img/F24.jpg" alt="Timber door and frame, finished"><div class="cap">Timber door &amp; frame · finished</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:34vh"><img class="g" src="img/F20.jpg" alt="Glass door"><div class="cap">Glass office door</div></div>
+      <div class="reveal" style="grid-column:span 6;padding:12px 0 0 24px"><p class="txt mu">Feature ceilings, frameless glass, timber doors and wall finishes, made to approved shop drawings and samples so the client signs off every detail before it is built.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr gold" data-w="gold" data-time="05:58 PM"><div class="sunlines"></div>
+  <div class="pad">
+    <div class="chapter reveal"><span class="n">A·04</span><h3>Design studio: see it before it is built.</h3></div>
+    <p class="studio-note reveal">Every image in this chapter is a design proposal our studio prepared for a client.</p>
+    <div class="slider reveal" id="slider" aria-label="Compare two design proposals">
+      <img src="img/R02.jpg" alt="Reception, design proposal"><div class="top"><img src="img/R01.jpg" alt="Atrium, design proposal"></div>
+      <div class="handle"></div><div class="cap">Office lobby · two views of one proposal · drag to compare</div>
+    </div>
+    <div class="g12" style="margin-top:18px">
+      <div class="ph reveal" style="grid-column:span 6;height:38vh"><img src="img/SL01.jpg" alt="Open-plan workplace"><div class="cap">Workplace · open plan</div></div>
+      <div class="ph reveal" style="grid-column:span 6;height:38vh"><img src="img/SL11.jpg" alt="Breakout lounge"><div class="cap">Workplace · breakout lounge</div></div>
+      <div class="ph reveal" style="grid-column:span 6;height:38vh"><img src="img/SL14.jpg" alt="Project room"><div class="cap">Workplace · project room</div></div>
+      <div class="ph reveal" style="grid-column:span 6;height:38vh"><img src="img/SL17.jpg" alt="Lounge"><div class="cap">Workplace · lounge</div></div>
+      <div class="ph reveal" style="grid-column:span 4;height:28vh"><img src="img/R06.jpg" alt="Vehicle showroom façade"><div class="cap">Vehicle showroom · façade</div></div>
+      <div class="ph reveal" style="grid-column:span 4;height:28vh"><img src="img/R07.jpg" alt="Showroom floor" style="object-position:center 60%"><div class="cap">Showroom floor</div></div>
+      <div class="ph reveal" style="grid-column:span 4;height:28vh"><img src="img/R15.jpg" alt="Hotel bridal lounge"><div class="cap">Hotel bridal lounge</div></div>
+      <div class="ph reveal" style="grid-column:span 4;height:28vh"><img src="img/R11.jpg" alt="Café seating"><div class="cap">Café seating</div></div>
+      <div class="ph reveal" style="grid-column:span 4;height:28vh"><img src="img/R13.jpg" alt="Executive washroom"><div class="cap">Executive washroom</div></div>
+      <div class="ph reveal" style="grid-column:span 4;height:28vh"><img src="img/R18.jpg" alt="Workplace café"><div class="cap">Workplace café</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr gold opener" data-w="gold" data-time="06:10 PM">
+  <img class="full g" src="img/F01.jpg" alt="Open office and lounge, finished"><div class="veil" style="background:linear-gradient(0deg,rgba(30,19,10,.92) 0%,rgba(30,19,10,.2) 45%,rgba(30,19,10,0) 70%)"></div><div class="glow" style="--sx:85%;--sy:20%"></div>
+  <div class="in" style="justify-content:flex-end;padding-bottom:110px;max-width:1100px">
+    <div class="t" style="color:#F5C27A">A·05 · SIGNATURE SPACE</div>
+    <h2 style="font-size:clamp(40px,4.6vw,76px)">Lights on. Handed over.</h2>
+    <p class="pr">Open office, lounge and city view on one floor, delivered with furniture placed, systems tested and a signed handover certificate.</p>
+  </div>
+</section>
+
+<section class="scr wm gold" data-w="gold" data-time="06:20 PM" style="min-height:auto">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n">A·06</span><h3>Finishing brands we specify and install.</h3></div>
+    <p class="txt mu reveal" style="max-width:820px">Brands specified and installed in our projects. Product data and certificates available on request.</p>
+    <div class="brandwall reveal"><div><img src="img/br-jotun.png" alt="Jotun"></div><div><img src="img/br-knauf.png" alt="Knauf"></div><div><img src="img/br-usg.png" alt="USG"></div><div><img src="img/br-rockwool.png" alt="Rockwool"></div><div><img src="img/br-dormakaba.png" alt="dormakaba"></div><div><img src="img/br-grohe.png" alt="Grohe"></div><div><img src="img/br-geberit.png" alt="Geberit"></div><div><img src="img/br-duravit.png" alt="Duravit"></div><div><img src="img/br-rak.png" alt="RAK Ceramics"></div><div><img src="img/br-tarkett.png" alt="Tarkett"></div></div>
+  </div>
+</section>
+
+<!-- ============ NOON ============ -->
+<section id="noon" class="scr noonOp opener" data-w="noon" data-time="12:00 PM">
+  <img class="full" src="img/S07.jpg" alt="Apron markings, finished" style="object-position:center 65%"><div class="veil"></div><div class="sunMark"></div>
+  <div class="in">
+    <div class="t">12:00 PM · NOON</div>
+    <h2>Specialist<br>Solutions</h2>
+    <div class="arn ar" dir="rtl">الحلول المتخصصة · الظهيرة</div>
+    <p class="pr" style="color:#4A4F57">Built for the hardest hour. Insulation, waterproofing, concrete repair, coatings, line marking and paving: systems that keep heat and water out, tested before handover.</p>
+  </div>
+</section>
+
+<!-- ============ NIGHT ============ -->
+
+<!-- ============ NOON content ============ -->
+<section class="scr wm noonW" data-w="noon" data-time="12:14 PM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·01</span><h3>The heat test.</h3></div>
+    <div class="g12">
+      <div class="reveal" style="grid-column:span 4">
+        <p class="txt" style="color:#4A4F57">At noon a Saudi roof can pass 70 °C. Drag the sun across the roof and watch each layer of the system stop heat and water before they reach the room below.</p>
+        <div class="readout"><div><span>Roof surface</span><b id="tSurf">—</b></div><div><span>Below the slab</span><b id="tRoom">—</b></div></div>
+        <p class="note">Illustrative values for a typical insulated roof build-up. Project values come from the design calculation.</p>
+      </div>
+      <div class="heat reveal" id="heat" style="grid-column:span 8" aria-label="Interactive roof heat test">
+        <div class="sky"><div class="sunDot" id="sunDot"></div></div>
+        <div class="rays" id="rays"></div>
+        <div class="lay" style="height:34px;background:#E9EBEE"><span>Protection screed &amp; tiles</span></div>
+        <div class="lay" style="height:30px;background:#C9CDD2"><span>Thermal insulation board</span></div>
+        <div class="lay" style="height:20px;background:#16181B;color:#F2F2F2;font-size:11px"><span>Waterproofing membrane</span></div>
+        <div class="lay" style="height:18px;background:#B5442A;color:#fff;font-size:11px"><span>Primer</span></div>
+        <div class="lay" style="height:70px;background:#8C9196;color:#fff"><span>Concrete slab</span></div>
+        <div class="room"><span>The room below stays in service</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scr noonW" data-w="noon" data-time="12:22 PM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·02</span><h3>Insulation, sprayed seamless.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 7;height:64vh"><img src="img/N01.jpg" alt="Spray polyurethane foam roof insulation being applied"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Roof insulation · spray polyurethane foam · applied on site</div></div>
+      <div style="grid-column:span 5;display:flex;flex-direction:column;gap:18px">
+        <div class="ph reveal" style="height:32vh"><img src="img/N02.jpg" alt="Roof insulation coverage across the roof"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Full roof coverage · one seamless layer</div></div>
+        <div class="reveal facts3">
+          <div><b>0</b><span>joints for heat or water to find</span></div>
+          <div><b>On site</b><span>thickness and density checked as we spray</span></div>
+          <div><b>UV coat</b><span>top coat against sun and foot traffic</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scr wm noonW" data-w="noon" data-time="12:32 PM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·03</span><h3>Four systems, layer by layer.</h3></div>
+    <div class="tabs reveal" role="tablist">
+      <button role="tab" class="on" data-s="0">Thermal insulation</button><button role="tab" data-s="1">Waterproofing</button><button role="tab" data-s="2">Concrete repair</button><button role="tab" data-s="3">Coatings, marking &amp; paving</button>
+    </div>
+    <div class="sys reveal" id="sys">
+      <div class="sysL" id="sysL"></div>
+      <div class="sysR"><h4 id="sysT"></h4><p id="sysD"></p><div class="proof"><span>Proof at handover</span><b id="sysP"></b></div><div class="where"><span>Typical use</span><b id="sysW"></b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr noonW" data-w="noon" data-time="12:40 PM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·04</span><h3>Water held. Water shown.</h3></div>
+    <p class="txt reveal" style="max-width:860px;color:#4A4F57;margin-bottom:22px">Lagoons, fountains and pools ask for two things at once: a membrane that never lets water out, and a finish people stop to look at. At Boulevard, Riyadh, our teams worked on the lagoon and water features at landmark scale.</p>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 12;height:40vh"><img src="img/N03.jpg" alt="Aerial view of a finished lagoon at Boulevard, Riyadh" style="object-position:center 60%"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Boulevard, Riyadh · lagoon · aerial view</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:30vh"><img src="img/N05.jpg" alt="Blue waterproofing membrane on water channels"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Boulevard, Riyadh · water-channel waterproofing</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:30vh"><img src="img/N07.jpg" alt="Fountain by day"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Fountain · by day</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:30vh"><img src="img/N08.jpg" alt="Fountain lit at night"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Fountain · by night</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:30vh"><img src="img/N09.jpg" alt="Water feature pool with planters"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Water-feature pool · finished</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr noonW" data-w="noon" data-time="12:52 PM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·05</span><h3>Floors, concrete and roads that take the load.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 6;height:40vh"><img src="img/N12.jpg" alt="Epoxy-coated hall floor, finished"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Epoxy floor · basement hall · finished</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:40vh"><img src="img/N10.jpg" alt="Epoxy parking bay with markings"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Epoxy parking · bay markings</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:40vh"><img src="img/N11.jpg" alt="Epoxy coated parking deck"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Epoxy deck · gloss finish</div></div>
+      <div class="ph reveal" style="grid-column:span 7;height:34vh"><img src="img/N13.jpg" alt="Asphalt paving with paver and roller"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Asphalt paving · paver and roller crew</div></div>
+      <div class="reveal" style="grid-column:span 5;align-self:center;padding-left:12px"><p class="txt" style="color:#4A4F57">Epoxy and polyurethane floors, concrete repair and protection, asphalt paving and line marking, specified for traffic, chemicals and heat, and tested before the area goes back into use.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr noonW" data-w="noon" data-time="12:48 PM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·06</span><h3>Where our teams have worked.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 7;height:64vh"><img src="img/N04.jpg" alt="Aerial view of Boulevard, Riyadh during works"><div class="cap" style="background:rgba(250,250,248,.92);color:#16181B">Boulevard, Riyadh · aerial view during works</div></div>
+      <div class="reveal places" style="grid-column:span 5">
+        <div><b>Holy sites</b><span>Works at Masjid Al-Haram and its piazza, Makkah</span></div>
+        <div><b>Airports</b><span>Sharma (NEOM), AlUla and Dammam airports</span></div>
+        <div><b>Border &amp; government</b><span>GACA border posts at Rafha, Najran and Sharorah</span></div>
+        <div><b>Landmarks &amp; towers</b><span>Boulevard Riyadh; Dar Al-Mashaer Towers, Makkah; Kingdom Tower area, Jeddah</span></div>
+        <div><b>Industry &amp; energy</b><span>Jazan refinery and IGCC; Yanbu distribution hub</span></div>
+        <div><b>Commercial roofs</b><span>Roof insulation and waterproofing for industrial and office clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scr wm noonW" data-w="noon" data-time="01:00 PM" style="min-height:auto">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#B5442A">B·07</span><h3>Approvals &amp; system brands.</h3></div>
+    <p class="txt reveal" style="max-width:820px;color:#4A4F57">Systems we apply and the brands we work with. Approval letters and certificates are available on request.</p>
+    <div class="brandwall bw2 reveal"><div><img src="img/br-saintgobain.png" alt="Saint-Gobain Weber"><em>Weber</em></div><div><img src="img/br-fosroc.png" alt="Fosroc"></div><div><img src="img/br-insuwrap.png" alt="Insuwrap"><em>Insuwrap · Gulf Seal</em></div><div><img src="img/br-sika.png" alt="Sika"></div><div><img src="img/br-hilti.png" alt="Hilti"></div></div>
+  </div>
+</section>
+
+<!-- ============ NIGHT content ============ -->
+<section id="night" class="scr nightOp opener" data-w="night" data-time="02:00 AM">
+  <img class="full" src="img/E05.jpg" alt="Approved layout drawing" style="filter:invert(1) hue-rotate(180deg) brightness(.55) contrast(1.25) saturate(.7);object-position:70% center"><div class="veil"></div><div class="stars"></div>
+  <div class="in">
+    <div class="t">02:00 AM · NIGHT</div>
+    <h2>Engineering<br>Solutions</h2>
+    <div class="arn ar" dir="rtl">الحلول الهندسية · الليل</div>
+    <p class="pr" style="color:#B7C3D6">Still running at 2 a.m. Engineering and project management, building services, IT and low-current systems, and facility management that keeps them running.</p>
+  </div>
+</section>
+
+<section class="scr nightW" data-w="night" data-time="02:12 AM"><div class="stars"></div>
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#F0A040">C·01</span><h3>Lights out. Systems on.</h3></div>
+    <p class="txt reveal" style="max-width:780px;color:#B7C3D6">At 2 a.m. the lights are off, but the building is not asleep. Power, air, water, fire safety, data and the people who watch over them, all engineered and maintained by one team. Watch it run, or pick a layer.</p>
+    <div class="bld reveal" id="bld">
+  <svg viewBox="0 0 1200 520" role="img" aria-label="Building cross-section at night showing systems one team builds and maintains">
+    <defs><filter id="glw" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <g class="base"><path d="M0 400 V330 H60 V300 H110 V340 H160 V280 H210 V320 H260 V350 H300 V400 Z M900 400 V310 H950 V270 H1000 V330 H1050 V290 H1100 V340 H1150 V300 H1200 V400 Z" fill="#0A1124"/><path d="M0 400H1200" stroke="#2A3658" stroke-width="1.5"/><rect x="0" y="400" width="1200" height="120" fill="#050912"/><rect x="330" y="90" width="540" height="310" fill="#0B1328" stroke="#33426A" stroke-width="1.5"/><rect x="330" y="400" width="540" height="70" fill="#080E1E" stroke="#26324F" stroke-dasharray="4 4"/><rect x="640" y="56" width="190" height="34" fill="#0B1328" stroke="#33426A"/><text x="735" y="77" fill="#5E6E94" font-family="monospace" font-size="10" text-anchor="middle">ROOF PLANT</text><text x="600" y="448" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">BASEMENT · MAIN ROOMS</text><path d="M330 152H870" stroke="#26324F"/><path d="M330 214H870" stroke="#26324F"/><path d="M330 276H870" stroke="#26324F"/><path d="M330 338H870" stroke="#26324F"/><rect x="352" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="410" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="468" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="526" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="584" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="642" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="700" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="758" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="816" y="106" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="352" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="410" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="468" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="526" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="584" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="642" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="700" y="168" width="36" height="30" fill="#3A3320" stroke="#1E2A4A"/><rect x="758" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="816" y="168" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="352" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="410" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="468" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="526" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="584" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="642" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="700" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="758" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="816" y="230" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="352" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="410" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="468" y="292" width="36" height="30" fill="#3A3320" stroke="#1E2A4A"/><rect x="526" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="584" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="642" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="700" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="758" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="816" y="292" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="352" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="410" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="468" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="526" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="584" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="642" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="700" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="758" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/><rect x="816" y="354" width="36" height="30" fill="#0F1A36" stroke="#1E2A4A"/></g><g class="lay" data-l="0"><rect x="316" y="76" width="568" height="408" fill="none" stroke="#F0A040" stroke-dasharray="6 6" class="flow"/><path d="M330 40V60" stroke="#F0A040"/><circle cx="330" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="330" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">A</text><path d="M420 40V60" stroke="#F0A040"/><circle cx="420" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="420" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">B</text><path d="M510 40V60" stroke="#F0A040"/><circle cx="510" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="510" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">C</text><path d="M600 40V60" stroke="#F0A040"/><circle cx="600" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="600" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">D</text><path d="M690 40V60" stroke="#F0A040"/><circle cx="690" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="690" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">E</text><path d="M780 40V60" stroke="#F0A040"/><circle cx="780" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="780" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">F</text><path d="M870 40V60" stroke="#F0A040"/><circle cx="870" cy="30" r="10" fill="none" stroke="#F0A040"/><text x="870" y="34" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">G</text><path d="M330 492H870M330 486V498M870 486V498" stroke="#F0A040"/><text x="600" y="512" fill="#F0A040" font-family="monospace" font-size="10" text-anchor="middle">ONE PROGRAMME · ONE SET OF APPROVED DRAWINGS</text></g><g class="lay" data-l="1"><path d="M380 465V90" stroke="#F0A040" stroke-width="3" class="flow"/><path d="M820 56V400" stroke="#8EC5FF" stroke-width="6" stroke-opacity=".8" class="flow"/><path d="M790 56V465" stroke="#4FD1E0" stroke-width="2.5" class="flow"/><path d="M380 96H760" stroke="#F0A040" stroke-width="1.6" class="flow"/><path d="M820 100H400" stroke="#8EC5FF" stroke-width="4" stroke-opacity=".7" class="flow rev"/><path d="M340 94H860" stroke="#FF6A5C" stroke-width="1.2" stroke-dasharray="2 10" /><circle cx="370" cy="98" r="2.4" fill="#FF6A5C"/><circle cx="460" cy="98" r="2.4" fill="#FF6A5C"/><circle cx="550" cy="98" r="2.4" fill="#FF6A5C"/><circle cx="640" cy="98" r="2.4" fill="#FF6A5C"/><circle cx="730" cy="98" r="2.4" fill="#FF6A5C"/><circle cx="820" cy="98" r="2.4" fill="#FF6A5C"/><path d="M380 158H760" stroke="#F0A040" stroke-width="1.6" class="flow"/><path d="M820 162H400" stroke="#8EC5FF" stroke-width="4" stroke-opacity=".7" class="flow rev"/><path d="M340 156H860" stroke="#FF6A5C" stroke-width="1.2" stroke-dasharray="2 10" /><circle cx="370" cy="160" r="2.4" fill="#FF6A5C"/><circle cx="460" cy="160" r="2.4" fill="#FF6A5C"/><circle cx="550" cy="160" r="2.4" fill="#FF6A5C"/><circle cx="640" cy="160" r="2.4" fill="#FF6A5C"/><circle cx="730" cy="160" r="2.4" fill="#FF6A5C"/><circle cx="820" cy="160" r="2.4" fill="#FF6A5C"/><path d="M380 220H760" stroke="#F0A040" stroke-width="1.6" class="flow"/><path d="M820 224H400" stroke="#8EC5FF" stroke-width="4" stroke-opacity=".7" class="flow rev"/><path d="M340 218H860" stroke="#FF6A5C" stroke-width="1.2" stroke-dasharray="2 10" /><circle cx="370" cy="222" r="2.4" fill="#FF6A5C"/><circle cx="460" cy="222" r="2.4" fill="#FF6A5C"/><circle cx="550" cy="222" r="2.4" fill="#FF6A5C"/><circle cx="640" cy="222" r="2.4" fill="#FF6A5C"/><circle cx="730" cy="222" r="2.4" fill="#FF6A5C"/><circle cx="820" cy="222" r="2.4" fill="#FF6A5C"/><path d="M380 282H760" stroke="#F0A040" stroke-width="1.6" class="flow"/><path d="M820 286H400" stroke="#8EC5FF" stroke-width="4" stroke-opacity=".7" class="flow rev"/><path d="M340 280H860" stroke="#FF6A5C" stroke-width="1.2" stroke-dasharray="2 10" /><circle cx="370" cy="284" r="2.4" fill="#FF6A5C"/><circle cx="460" cy="284" r="2.4" fill="#FF6A5C"/><circle cx="550" cy="284" r="2.4" fill="#FF6A5C"/><circle cx="640" cy="284" r="2.4" fill="#FF6A5C"/><circle cx="730" cy="284" r="2.4" fill="#FF6A5C"/><circle cx="820" cy="284" r="2.4" fill="#FF6A5C"/><path d="M380 344H760" stroke="#F0A040" stroke-width="1.6" class="flow"/><path d="M820 348H400" stroke="#8EC5FF" stroke-width="4" stroke-opacity=".7" class="flow rev"/><path d="M340 342H860" stroke="#FF6A5C" stroke-width="1.2" stroke-dasharray="2 10" /><circle cx="370" cy="346" r="2.4" fill="#FF6A5C"/><circle cx="460" cy="346" r="2.4" fill="#FF6A5C"/><circle cx="550" cy="346" r="2.4" fill="#FF6A5C"/><circle cx="640" cy="346" r="2.4" fill="#FF6A5C"/><circle cx="730" cy="346" r="2.4" fill="#FF6A5C"/><circle cx="820" cy="346" r="2.4" fill="#FF6A5C"/><g font-family="monospace" font-size="10"><text x="300" y="470" fill="#F0A040" text-anchor="end">POWER</text><text x="300" y="484" fill="#8EC5FF" text-anchor="end">HVAC</text><text x="300" y="498" fill="#4FD1E0" text-anchor="end">WATER</text><text x="300" y="512" fill="#FF6A5C" text-anchor="end">FIRE</text></g></g><g class="lay" data-l="2"><path d="M430 465V100" stroke="#8EC5FF" stroke-width="2" stroke-dasharray="1 5" class="flow"/><path d="M430 142H740" stroke="#8EC5FF" stroke-width="1.2" stroke-dasharray="1 5" class="flow"/><circle cx="520" cy="120" r="3" fill="#8EC5FF"/><circle cx="520" cy="120" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></circle><circle cx="680" cy="120" r="3" fill="#8EC5FF"/><circle cx="680" cy="120" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></circle><path d="M430 204H740" stroke="#8EC5FF" stroke-width="1.2" stroke-dasharray="1 5" class="flow"/><circle cx="520" cy="182" r="3" fill="#8EC5FF"/><circle cx="520" cy="182" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.3s" repeatCount="indefinite"/></circle><circle cx="680" cy="182" r="3" fill="#8EC5FF"/><circle cx="680" cy="182" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.3s" repeatCount="indefinite"/></circle><path d="M430 266H740" stroke="#8EC5FF" stroke-width="1.2" stroke-dasharray="1 5" class="flow"/><circle cx="520" cy="244" r="3" fill="#8EC5FF"/><circle cx="520" cy="244" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></circle><circle cx="680" cy="244" r="3" fill="#8EC5FF"/><circle cx="680" cy="244" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></circle><path d="M430 328H740" stroke="#8EC5FF" stroke-width="1.2" stroke-dasharray="1 5" class="flow"/><circle cx="520" cy="306" r="3" fill="#8EC5FF"/><circle cx="520" cy="306" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.8999999999999999s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.8999999999999999s" repeatCount="indefinite"/></circle><circle cx="680" cy="306" r="3" fill="#8EC5FF"/><circle cx="680" cy="306" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="0.8999999999999999s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="0.8999999999999999s" repeatCount="indefinite"/></circle><path d="M430 390H740" stroke="#8EC5FF" stroke-width="1.2" stroke-dasharray="1 5" class="flow"/><circle cx="520" cy="368" r="3" fill="#8EC5FF"/><circle cx="520" cy="368" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle><circle cx="680" cy="368" r="3" fill="#8EC5FF"/><circle cx="680" cy="368" r="6" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="4;22" dur="2.4s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle><path d="M336 372l40 -18v36z" fill="#8EC5FF" fill-opacity=".18" stroke="#8EC5FF"/><rect x="332" y="366" width="8" height="12" fill="#8EC5FF"/><rect x="410" y="420" width="40" height="40" fill="none" stroke="#8EC5FF"/><text x="430" y="476" fill="#8EC5FF" font-family="monospace" font-size="9" text-anchor="middle">CORE RACK</text></g><g class="lay" data-l="3"><g class="tick" style="animation-delay:0.0s"><circle cx="910" cy="121" r="11" fill="#0B1328" stroke="#6BD49A"/><path d="M904 121l4 4 8 -8" stroke="#6BD49A" stroke-width="2" fill="none"/><text x="930" y="125" fill="#6BD49A" font-family="monospace" font-size="10">FLOOR 5 · TESTED &amp; RECORDED</text></g><g class="tick" style="animation-delay:0.25s"><circle cx="910" cy="183" r="11" fill="#0B1328" stroke="#6BD49A"/><path d="M904 183l4 4 8 -8" stroke="#6BD49A" stroke-width="2" fill="none"/><text x="930" y="187" fill="#6BD49A" font-family="monospace" font-size="10">FLOOR 4 · TESTED &amp; RECORDED</text></g><g class="tick" style="animation-delay:0.5s"><circle cx="910" cy="245" r="11" fill="#0B1328" stroke="#6BD49A"/><path d="M904 245l4 4 8 -8" stroke="#6BD49A" stroke-width="2" fill="none"/><text x="930" y="249" fill="#6BD49A" font-family="monospace" font-size="10">FLOOR 3 · TESTED &amp; RECORDED</text></g><g class="tick" style="animation-delay:0.75s"><circle cx="910" cy="307" r="11" fill="#0B1328" stroke="#6BD49A"/><path d="M904 307l4 4 8 -8" stroke="#6BD49A" stroke-width="2" fill="none"/><text x="930" y="311" fill="#6BD49A" font-family="monospace" font-size="10">FLOOR 2 · TESTED &amp; RECORDED</text></g><g class="tick" style="animation-delay:1.0s"><circle cx="910" cy="369" r="11" fill="#0B1328" stroke="#6BD49A"/><path d="M904 369l4 4 8 -8" stroke="#6BD49A" stroke-width="2" fill="none"/><text x="930" y="373" fill="#6BD49A" font-family="monospace" font-size="10">FLOOR 1 · TESTED &amp; RECORDED</text></g></g><g class="lay" data-l="4"><g><rect x="110" y="236" width="150" height="120" fill="#0B1328" stroke="#F0A040"/><rect x="118" y="228" width="150" height="120" fill="#0B1328" stroke="#F0A040"/><rect x="126" y="220" width="150" height="120" fill="#101A36" stroke="#F0A040"/><g font-family="monospace" font-size="10" fill="#F0A040"><text x="140" y="246">HANDOVER PACK</text><text x="140" y="270" fill="#E8EEF5">As-built drawings</text><text x="140" y="288" fill="#E8EEF5">O&amp;M manuals</text><text x="140" y="306" fill="#E8EEF5">Warranties</text><text x="140" y="324" fill="#E8EEF5">Signed certificate</text></g><circle cx="262" cy="330" r="14" fill="#F0A040"/><path d="M256 330l4 4 8-8" stroke="#0B1328" stroke-width="2" fill="none"/><path d="M276 280H330" stroke="#F0A040" stroke-dasharray="3 5" class="flow"/></g></g><g class="lay" data-l="5"><rect x="350" y="346" width="90" height="44" fill="#13203F" stroke="#F0A040"/><rect x="358" y="352" width="74" height="26" fill="#F0A040" fill-opacity=".25"/><path d="M362 372l12-8 10 5 12-11 12 6 10-4" stroke="#F0A040" fill="none"/><text x="395" y="404" fill="#F0A040" font-family="monospace" font-size="9" text-anchor="middle">FM DESK · 24/7</text><path id="patrol" d="M390 380 H830 V318 H370 V256 H830 V194 H370 V132 H830" fill="none" stroke="#F0A040" stroke-opacity=".25" stroke-dasharray="2 6"/><circle r="6" fill="#F0A040"><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#patrol"/></animateMotion></circle><circle r="14" fill="#F0A040" fill-opacity=".2"><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#patrol"/></animateMotion></circle></g>
+    <text x="1180" y="40" fill="#B7C3D6" font-family="monospace" font-size="13" text-anchor="end" id="bldClock">02:12 AM</text>
+  </svg>
+  <div class="chips" id="chips">
+    <button data-n="0"><i style="background:#F0A040"></i>Project management</button><button data-n="1"><i style="background:#8EC5FF"></i>Building services</button><button data-n="2"><i style="background:#8EC5FF"></i>IT &amp; low current</button><button data-n="3"><i style="background:#6BD49A"></i>Testing &amp; commissioning</button><button data-n="4"><i style="background:#F0A040"></i>Handover &amp; documents</button><button data-n="5"><i style="background:#F0A040"></i>Facility management</button>
+  </div>
+  <div class="prog"><span id="progBar"></span></div>
+</div>
+    <div class="nodeInfo reveal" id="nodeInfo"><h4></h4><p></p></div>
+  </div>
+</section>
+
+<section class="scr wm nightW" data-w="night" data-time="02:30 AM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#F0A040">C·02</span><h3>Engineering &amp; project management.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 6;height:56vh;background:#0B1328;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 600 420" style="width:92%;height:auto" fill="none" stroke="#F0A040" stroke-width="1.4" aria-label="Layout drawing, line diagram">
+<g opacity=".18" stroke="#7F93B8" stroke-width=".6"><path d="M20 20V400"/><path d="M40 20V400"/><path d="M60 20V400"/><path d="M80 20V400"/><path d="M100 20V400"/><path d="M120 20V400"/><path d="M140 20V400"/><path d="M160 20V400"/><path d="M180 20V400"/><path d="M200 20V400"/><path d="M220 20V400"/><path d="M240 20V400"/><path d="M260 20V400"/><path d="M280 20V400"/><path d="M300 20V400"/><path d="M320 20V400"/><path d="M340 20V400"/><path d="M360 20V400"/><path d="M380 20V400"/><path d="M400 20V400"/><path d="M420 20V400"/><path d="M440 20V400"/><path d="M460 20V400"/><path d="M480 20V400"/><path d="M500 20V400"/><path d="M520 20V400"/><path d="M540 20V400"/><path d="M560 20V400"/><path d="M580 20V400"/><path d="M20 20H580"/><path d="M20 40H580"/><path d="M20 60H580"/><path d="M20 80H580"/><path d="M20 100H580"/><path d="M20 120H580"/><path d="M20 140H580"/><path d="M20 160H580"/><path d="M20 180H580"/><path d="M20 200H580"/><path d="M20 220H580"/><path d="M20 240H580"/><path d="M20 260H580"/><path d="M20 280H580"/><path d="M20 300H580"/><path d="M20 320H580"/><path d="M20 340H580"/><path d="M20 360H580"/><path d="M20 380H580"/><path d="M20 400H580"/></g>
+<rect x="60" y="60" width="480" height="300" stroke-width="2.4"/>
+<path d="M60 170H250M250 60V360M250 250H540M400 60V250M400 160H540M150 170V360M150 270H250"/>
+<path d="M250 205a30 30 0 0 1 30 30M400 120a24 24 0 0 0-24 24M150 300a24 24 0 0 1 24-24" stroke-dasharray="3 3"/>
+<g fill="#F0A040" stroke="none" font-family="monospace" font-size="11"><text x="80" y="110">MEETING</text><text x="270" y="110">EXECUTIVE</text><text x="420" y="110">OFFICE</text><text x="270" y="300">OPEN PLAN · 24 WS</text><text x="70" y="230">PANTRY</text><text x="160" y="320">STORE</text><text x="420" y="210">IT ROOM</text></g>
+<g stroke="#B7C3D6" stroke-width=".8"><path d="M60 385H540M60 380V390M540 380V390"/><path d="M565 60V360M560 60H570M560 360H570"/></g>
+<g fill="#B7C3D6" stroke="none" font-family="monospace" font-size="10"><text x="285" y="402">24.00 m</text><text x="572" y="214" transform="rotate(90 572 214)">15.00 m</text></g>
+<circle cx="60" cy="60" r="9" fill="#060A16"/><text x="60" y="64" fill="#F0A040" stroke="none" font-family="monospace" font-size="10" text-anchor="middle">1</text><circle cx="250" cy="60" r="9" fill="#060A16"/><text x="250" y="64" fill="#F0A040" stroke="none" font-family="monospace" font-size="10" text-anchor="middle">2</text><circle cx="400" cy="60" r="9" fill="#060A16"/><text x="400" y="64" fill="#F0A040" stroke="none" font-family="monospace" font-size="10" text-anchor="middle">3</text><circle cx="540" cy="60" r="9" fill="#060A16"/><text x="540" y="64" fill="#F0A040" stroke="none" font-family="monospace" font-size="10" text-anchor="middle">4</text><circle cx="540" cy="360" r="9" fill="#060A16"/><text x="540" y="364" fill="#F0A040" stroke="none" font-family="monospace" font-size="10" text-anchor="middle">5</text><circle cx="60" cy="360" r="9" fill="#060A16"/><text x="60" y="364" fill="#F0A040" stroke="none" font-family="monospace" font-size="10" text-anchor="middle">6</text>
+</svg><div class="cap" style="background:rgba(6,10,22,.85)">From survey to handover · one set of approved drawings</div></div>
+      <div class="reveal" style="grid-column:span 6">
+        <ol class="stages">
+          <li><b>Survey &amp; brief</b><span>Site survey, measurements, the client's brief.</span></li>
+          <li><b>Design &amp; approved details</b><span>Layouts, shop drawings, samples, 3D views.</span></li>
+          <li><b>Planning &amp; procurement</b><span>Programme, long-lead items, approved suppliers.</span></li>
+          <li><b>Build &amp; supervise</b><span>Daily supervision, inspections, weekly reports.</span></li>
+          <li><b>Test &amp; commission</b><span>Services, systems and networks tested and recorded.</span></li>
+          <li><b>Handover &amp; aftercare</b><span>Certificate, as-built pack, maintenance plan.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scr nightW" data-w="night" data-time="02:46 AM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#F0A040">C·03</span><h3>IT &amp; low-current systems.</h3></div>
+    <div class="g12">
+      <div class="itplan reveal" id="itplan" style="grid-column:span 7">
+        <svg viewBox="0 0 700 440" role="img" aria-label="Office floor plan showing cabling, Wi-Fi, CCTV, access control, PA and fire-alarm devices"><rect x="20" y="20" width="660" height="400" fill="#0B1328" stroke="#33426A" stroke-width="2"/><path d="M150 20V140M20 140H150M150 140H680M300 20V140M450 20V140M560 140V420M560 280H680M20 300H160M160 300V420M300 140V170M300 230V250" stroke="#33426A" stroke-width="2" fill="none"/><text x="85" y="85" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">IT ROOM</text><text x="225" y="85" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">MEETING</text><text x="375" y="85" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">BOARD</text><text x="565" y="85" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">EXECUTIVE</text><text x="620" y="215" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">OFFICE</text><text x="620" y="355" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">OFFICE</text><text x="90" y="365" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">RECEPTION</text><text x="360" y="300" fill="#4C5A7E" font-family="monospace" font-size="10" text-anchor="middle">OPEN PLAN</text><rect x="216" y="196" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="216" y="246" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="216" y="336" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="216" y="386" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="276" y="196" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="276" y="246" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="276" y="336" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="276" y="386" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="336" y="196" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="336" y="246" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="336" y="336" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="336" y="386" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="396" y="196" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="396" y="246" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="396" y="336" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="396" y="386" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="456" y="196" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="456" y="246" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="456" y="336" width="28" height="18" fill="#101A36" stroke="#26324F"/><rect x="456" y="386" width="28" height="18" fill="#101A36" stroke="#26324F"/><path d="M100 420h40" stroke="#0B1328" stroke-width="6"/><text x="120" y="436" fill="#5E6E94" font-family="monospace" font-size="9" text-anchor="middle">ENTRANCE</text><g class="flay" data-l="0"><rect x="60" y="45" width="34" height="50" fill="none" stroke="#F0A040"/><path d="M64 55h26M64 63h26M64 71h26M64 79h26" stroke="#F0A040" stroke-width=".8"/><path d="M94 70H130V160H540" stroke="#F0A040" stroke-width="2" fill="none" class="flow"/><path d="M230 160V395" stroke="#F0A040" stroke-width="1" fill="none" class="flow" opacity=".8"/><path d="M290 160V395" stroke="#F0A040" stroke-width="1" fill="none" class="flow" opacity=".8"/><path d="M350 160V395" stroke="#F0A040" stroke-width="1" fill="none" class="flow" opacity=".8"/><path d="M410 160V395" stroke="#F0A040" stroke-width="1" fill="none" class="flow" opacity=".8"/><path d="M470 160V395" stroke="#F0A040" stroke-width="1" fill="none" class="flow" opacity=".8"/><circle cx="230" cy="205" r="2.6" fill="#F0A040"/><circle cx="230" cy="255" r="2.6" fill="#F0A040"/><circle cx="230" cy="345" r="2.6" fill="#F0A040"/><circle cx="230" cy="395" r="2.6" fill="#F0A040"/><circle cx="290" cy="205" r="2.6" fill="#F0A040"/><circle cx="290" cy="255" r="2.6" fill="#F0A040"/><circle cx="290" cy="345" r="2.6" fill="#F0A040"/><circle cx="290" cy="395" r="2.6" fill="#F0A040"/><circle cx="350" cy="205" r="2.6" fill="#F0A040"/><circle cx="350" cy="255" r="2.6" fill="#F0A040"/><circle cx="350" cy="345" r="2.6" fill="#F0A040"/><circle cx="350" cy="395" r="2.6" fill="#F0A040"/><circle cx="410" cy="205" r="2.6" fill="#F0A040"/><circle cx="410" cy="255" r="2.6" fill="#F0A040"/><circle cx="410" cy="345" r="2.6" fill="#F0A040"/><circle cx="410" cy="395" r="2.6" fill="#F0A040"/><circle cx="470" cy="205" r="2.6" fill="#F0A040"/><circle cx="470" cy="255" r="2.6" fill="#F0A040"/><circle cx="470" cy="345" r="2.6" fill="#F0A040"/><circle cx="470" cy="395" r="2.6" fill="#F0A040"/><path d="M540 160V215H600M540 160V355H600M450 160V100M300 160V100M130 160V100" stroke="#F0A040" stroke-width="1" fill="none" class="flow" opacity=".8"/></g><g class="flay" data-l="1"><circle cx="260" cy="300" r="4" fill="#8EC5FF"/><circle cx="260" cy="300" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="0.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="0.0s" repeatCount="indefinite"/></circle><circle cx="260" cy="300" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="1.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="1.0s" repeatCount="indefinite"/></circle><circle cx="260" cy="300" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="2.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="2.0s" repeatCount="indefinite"/></circle><circle cx="440" cy="300" r="4" fill="#8EC5FF"/><circle cx="440" cy="300" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="0.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="0.4s" repeatCount="indefinite"/></circle><circle cx="440" cy="300" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="1.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="1.4s" repeatCount="indefinite"/></circle><circle cx="440" cy="300" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="2.4s" repeatCount="indefinite"/></circle><circle cx="375" cy="70" r="4" fill="#8EC5FF"/><circle cx="375" cy="70" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="0.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="0.8s" repeatCount="indefinite"/></circle><circle cx="375" cy="70" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="1.8s" repeatCount="indefinite"/></circle><circle cx="375" cy="70" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="2.8s" repeatCount="indefinite"/></circle><circle cx="620" cy="200" r="4" fill="#8EC5FF"/><circle cx="620" cy="200" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="1.2000000000000002s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="1.2000000000000002s" repeatCount="indefinite"/></circle><circle cx="620" cy="200" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="2.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="2.2s" repeatCount="indefinite"/></circle><circle cx="620" cy="200" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="3.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="3.2s" repeatCount="indefinite"/></circle><circle cx="90" cy="360" r="4" fill="#8EC5FF"/><circle cx="90" cy="360" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="1.6s" repeatCount="indefinite"/></circle><circle cx="90" cy="360" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="2.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="2.6s" repeatCount="indefinite"/></circle><circle cx="90" cy="360" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="3.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="3.6s" repeatCount="indefinite"/></circle><circle cx="225" cy="70" r="4" fill="#8EC5FF"/><circle cx="225" cy="70" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="2.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="2.0s" repeatCount="indefinite"/></circle><circle cx="225" cy="70" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="3.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="3.0s" repeatCount="indefinite"/></circle><circle cx="225" cy="70" r="5" fill="none" stroke="#8EC5FF"><animate attributeName="r" values="5;58" dur="3s" begin="4.0s" repeatCount="indefinite"/><animate attributeName="opacity" values=".8;0" dur="3s" begin="4.0s" repeatCount="indefinite"/></circle></g><g class="flay" data-l="2"><g transform="translate(28 150) rotate(20)"><path d="M0 0L120 -38A126 126 0 0 1 120 38Z" fill="#FF6A5C" fill-opacity=".10" stroke="#FF6A5C" stroke-opacity=".5"/><rect x="-6" y="-5" width="14" height="10" fill="#FF6A5C"/></g><g transform="translate(672 150) rotate(160)"><path d="M0 0L120 -38A126 126 0 0 1 120 38Z" fill="#FF6A5C" fill-opacity=".10" stroke="#FF6A5C" stroke-opacity=".5"/><rect x="-6" y="-5" width="14" height="10" fill="#FF6A5C"/></g><g transform="translate(150 410) rotate(-60)"><path d="M0 0L120 -38A126 126 0 0 1 120 38Z" fill="#FF6A5C" fill-opacity=".10" stroke="#FF6A5C" stroke-opacity=".5"/><rect x="-6" y="-5" width="14" height="10" fill="#FF6A5C"/></g><g transform="translate(552 410) rotate(-120)"><path d="M0 0L120 -38A126 126 0 0 1 120 38Z" fill="#FF6A5C" fill-opacity=".10" stroke="#FF6A5C" stroke-opacity=".5"/><rect x="-6" y="-5" width="14" height="10" fill="#FF6A5C"/></g><g transform="translate(160 292) rotate(-20)"><path d="M0 0L120 -38A126 126 0 0 1 120 38Z" fill="#FF6A5C" fill-opacity=".10" stroke="#FF6A5C" stroke-opacity=".5"/><rect x="-6" y="-5" width="14" height="10" fill="#FF6A5C"/></g><rect x="145" y="122" width="10" height="12" rx="2" fill="#0B1328" stroke="#6BD49A" stroke-width="1.5"/><circle cx="150" cy="128" r="2" fill="#6BD49A"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle><rect x="295" y="122" width="10" height="12" rx="2" fill="#0B1328" stroke="#6BD49A" stroke-width="1.5"/><circle cx="300" cy="128" r="2" fill="#6BD49A"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle><rect x="445" y="122" width="10" height="12" rx="2" fill="#0B1328" stroke="#6BD49A" stroke-width="1.5"/><circle cx="450" cy="128" r="2" fill="#6BD49A"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle><rect x="135" y="406" width="10" height="12" rx="2" fill="#0B1328" stroke="#6BD49A" stroke-width="1.5"/><circle cx="140" cy="412" r="2" fill="#6BD49A"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle><rect x="555" y="244" width="10" height="12" rx="2" fill="#0B1328" stroke="#6BD49A" stroke-width="1.5"/><circle cx="560" cy="250" r="2" fill="#6BD49A"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle><rect x="555" y="324" width="10" height="12" rx="2" fill="#0B1328" stroke="#6BD49A" stroke-width="1.5"/><circle cx="560" cy="330" r="2" fill="#6BD49A"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle></g><g class="flay" data-l="3"><circle cx="225" cy="110" r="5" fill="none" stroke="#E8EEF5"/><path d="M233 105a8 8 0 0 1 0 10M237 101a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="375" cy="110" r="5" fill="none" stroke="#E8EEF5"/><path d="M383 105a8 8 0 0 1 0 10M387 101a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="565" cy="110" r="5" fill="none" stroke="#E8EEF5"/><path d="M573 105a8 8 0 0 1 0 10M577 101a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="620" cy="240" r="5" fill="none" stroke="#E8EEF5"/><path d="M628 235a8 8 0 0 1 0 10M632 231a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="620" cy="380" r="5" fill="none" stroke="#E8EEF5"/><path d="M628 375a8 8 0 0 1 0 10M632 371a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="360" cy="220" r="5" fill="none" stroke="#E8EEF5"/><path d="M368 215a8 8 0 0 1 0 10M372 211a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="360" cy="370" r="5" fill="none" stroke="#E8EEF5"/><path d="M368 365a8 8 0 0 1 0 10M372 361a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="90" cy="330" r="5" fill="none" stroke="#E8EEF5"/><path d="M98 325a8 8 0 0 1 0 10M102 321a13 13 0 0 1 0 18" stroke="#E8EEF5" fill="none" stroke-opacity=".7"/><circle cx="190" cy="40" r="4" fill="#FF6A5C"><animate attributeName="opacity" values="1;.3;1" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="420" cy="40" r="4" fill="#FF6A5C"><animate attributeName="opacity" values="1;.3;1" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="660" cy="180" r="4" fill="#FF6A5C"><animate attributeName="opacity" values="1;.3;1" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="660" cy="320" r="4" fill="#FF6A5C"><animate attributeName="opacity" values="1;.3;1" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="40" cy="250" r="4" fill="#FF6A5C"><animate attributeName="opacity" values="1;.3;1" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="520" cy="410" r="4" fill="#FF6A5C"><animate attributeName="opacity" values="1;.3;1" dur="2.2s" repeatCount="indefinite"/></circle></g></svg>
+        <div class="itlegend"><span><i style="background:#F0A040"></i>Cabling</span><span><i style="background:#8EC5FF"></i>Wi-Fi</span><span><i style="background:#FF6A5C"></i>CCTV &amp; fire alarm</span><span><i style="background:#6BD49A"></i>Access control</span><span><i style="background:#E8EEF5"></i>PA &amp; voice</span></div>
+      </div>
+      <div class="reveal" style="grid-column:span 5">
+        <p class="txt mu" style="margin:0 0 18px">The network you never see: designed with the fit-out, hidden in the ceiling, and live on day one. Tap a layer to light it up.</p>
+        <div class="cards itcards">
+          <button data-l="0"><b>Structured cabling</b><span>Copper and fibre backbones, racks, patching and labelling.</span></button>
+          <button data-l="1"><b>Networks &amp; Wi-Fi</b><span>Switching and access points planned with the ceiling layout.</span></button>
+          <button data-l="2"><b>CCTV &amp; access control</b><span>Cameras, recording, readers and controllers integrated with doors.</span></button>
+          <button data-l="3"><b>Low-current systems</b><span>Data, voice, PA and fire-alarm interfaces routed with the services.</span></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scr nightW" data-w="night" data-time="03:05 AM">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#F0A040">C·04</span><h3>Facility management that reports every visit.</h3></div>
+    <div class="g12">
+      <div class="ph reveal" style="grid-column:span 7;height:42vh"><img src="img/M05.jpg" alt="Parking deck" style="filter:brightness(.7) saturate(.7)"><div class="cap" style="background:rgba(6,10,22,.85)">Parking deck · coatings, markings &amp; wayfinding · maintained</div></div>
+      <div class="board reveal" style="grid-column:span 5" aria-label="Sample service board">
+        <div class="bh"><span>SERVICE BOARD</span><em>SAMPLE</em></div>
+        <div class="row"><span>REQ-0412</span><span>Lighting · Level P2</span><b class="ok">Closed</b></div>
+        <div class="row"><span>PPM-1186</span><span>Chiller quarterly service</span><b class="ok">Done</b></div>
+        <div class="row"><span>REQ-0415</span><span>Access door · Gate 3</span><b class="run">On site</b></div>
+        <div class="row"><span>PPM-1190</span><span>Fire alarm test</span><b class="due">Tomorrow</b></div>
+        <div class="flow"><span>Request</span><span>Attend</span><span>Fix</span><span>Report</span><span>Close</span></div>
+      </div>
+      <div class="ph reveal" style="grid-column:span 4;height:30vh"><img src="img/M06.jpg" alt="Ramp markings" style="filter:brightness(.72) saturate(.7)"><div class="cap" style="background:rgba(6,10,22,.85)">Ramp markings · maintained</div></div>
+      <div class="ph reveal" style="grid-column:span 3;height:30vh"><img src="img/M03.jpg" alt="Exit wayfinding" style="filter:brightness(.72) saturate(.7)"><div class="cap" style="background:rgba(6,10,22,.85)">Exit wayfinding</div></div>
+      <div class="reveal" style="grid-column:span 5;padding-top:8px"><p class="txt" style="color:#B7C3D6">Preventive and reactive maintenance, parking and traffic systems, and service contracts. Every visit is logged, attended, fixed, reported and closed.</p><p class="note" style="color:#7F8BA0">The service board above is a design sample, not live client data.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scr wm nightW" data-w="night" data-time="03:20 AM" style="min-height:auto">
+  <div class="pad">
+    <div class="chapter reveal"><span class="n" style="color:#F0A040">C·05</span><h3>Engineering &amp; IT brands we install.</h3></div>
+    <div class="brandwall bw3 reveal"><div><img src="img/br-schneider.png" alt="Schneider Electric"></div><div><img src="img/br-legrand.png" alt="Legrand"></div><div><img src="img/br-abb.png" alt="ABB"></div><div><img src="img/br-siemens.png" alt="Siemens"></div><div><img src="img/br-signify.png" alt="Signify"></div><div><img src="img/br-trane.png" alt="Trane"></div><div><img src="img/br-carrier.png" alt="Carrier"></div><div><img src="img/br-zamil.png" alt="Zamil"></div><div class="bt"><span>Simplex</span></div><div><img src="img/br-honeywell.png" alt="Honeywell"></div><div><img src="img/br-corning.png" alt="Corning"></div><div><img src="img/br-ubiquiti.png" alt="Ubiquiti UniFi"></div><div><img src="img/br-hikvision.png" alt="Hikvision"></div><div><img src="img/br-dahua.png" alt="Dahua"></div><div><img src="img/br-bosch.png" alt="Bosch"></div></div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section id="clients" class="scr wm lobby" data-w="proof" data-time="2007 — 2026" style="min-height:auto">
+  <div class="pad">
+    <div class="eb reveal" style="color:var(--gold)">Clients</div>
+    <h2 class="reveal" style="font-size:clamp(36px,3.6vw,58px);margin:16px 0 10px">Clients and main contractors we have delivered for.</h2>
+    <p class="txt reveal" style="color:#A9A49B;max-width:820px">Every name below awarded us work between 2007 and 2026.</p>
+    <div class="band reveal"><div class="bl">Holy sites &amp; royal projects</div><div class="bt">Royal palaces in Makkah and Jeddah · works at Masjid Al-Haram</div></div>
+    <div class="logos reveal">
+      <div><img src="img/cl-sela.png" alt="Sela"></div><div><img src="img/cl-crowne-plaza.png" alt="Crowne Plaza"></div><div><img src="img/cl-abdul-latif-jameel.png" alt="Abdul Latif Jameel"></div><div><img src="img/cl-modon.png" alt="Modon"></div><div><img src="img/cl-relia.png" alt="Relia"></div><div><img src="img/cl-plat4mation-2023.png" alt="Plat4mation"></div>
+      <div><img src="img/cl-al-jazirah-falcon.png" alt="Al Jazirah Falcon"></div><div><img src="img/cl-assayel.png" alt="Assayel"></div><div><img src="img/cl-sgn-saudi-german-co.png" alt="Saudi German Co."></div><div><img src="img/cl-starlinks.png" alt="Starlinks"></div><div><img src="img/cl-darat-al-qahwa.png" alt="Darat Al-Qahwa"></div><div><img src="img/cl-jabal-edsas.png" alt="Jabal Edsas"></div>
+      <div><img src="img/cl-al-khat-al-zamani.png" alt="Al Khat Al Zamani"></div><div><img src="img/cl-meg-partners.png" alt="MEG &amp; Partners"></div><div><img src="img/cl-rabaa-alothaim-architects-4a.png" alt="Rabaa Alothaim Architects"></div><div><img src="img/cl-webook.png" alt="Webook"></div>
+      <div><img src="img/cl-aramco.png" alt="Saudi Aramco"></div><div><img src="img/cl-mwl.png" alt="Muslim World League"></div><div><img src="img/cl-makkahchamber.png" alt="Makkah Chamber"></div><div><img src="img/cl-dar.png" alt="Dar Al-Handasah"></div><div><img src="img/cl-ikk.png" alt="Isam Khairi Kabbani Group"></div><div><img src="img/cl-saveto.png" alt="SAVETO"></div><div><img src="img/cl-haval.png" alt="HAVAL"></div><div><img src="img/cl-reanda.png" alt="REANDA"></div><div><img src="img/cl-jyc.png" alt="Jeddah Yacht Club &amp; Marina"></div><div><img src="img/cl-mbl.png" alt="Modern Building Leaders (MBL)"></div><div><img src="img/cl-absar.png" alt="ABSAR"></div><div><img src="img/cl-tobys.png" alt="Toby's Estate Coffee Roasters"></div><div><img src="img/cl-boutique.png" alt="Boutique Group (Tuwaiq Palace)"></div>
+    </div>
+    <div class="names reveal">
+      <span>Saudi Tumpane</span><span>Batouni</span><span>Saudi European Expo</span><span>BKS</span><span>Saudi United Waterproofing</span><span>Hashem Ismail Co.</span><span>Platinum Construction</span><span>Bassam Shakir Contracting</span><span>Saudieh for Building</span><span>Al-Rawadif Est.</span><span>Dream Home Co.</span><span>Shaqran Café</span><span>Corniche Towers</span><span>Memar International</span>
+    </div>
+    <p class="note reveal" style="color:#7F7A72">Clients without a published official logo are listed by name.</p>
+  </div>
+</section>
+
+<section class="scr wm lobby" data-w="proof" data-time="Quality" style="min-height:auto">
+  <div class="pad">
+    <div class="eb reveal" style="color:var(--gold)">Quality, health, safety &amp; environment</div>
+    <h2 class="reveal" style="font-size:clamp(34px,3.2vw,52px);margin:16px 0 12px">Managed to international standards.</h2><p class="txt reveal" style="color:#A9A49B;margin-bottom:32px">Certificates available on request.</p>
+    <div class="iso reveal"><div><b>ISO 9001:2015</b><span>Quality management</span></div><div><b>ISO 14001:2015</b><span>Environmental management</span></div><div><b>ISO 45001:2018</b><span>Occupational health &amp; safety</span></div></div>
+    <div class="qgrid reveal"><div><b>Inspection &amp; test plans</b><span>Hold points, checklists and signed inspections.</span></div><div><b>Site HSE plan</b><span>Risk assessment, permits, PPE and toolbox talks.</span></div><div><b>Approved materials</b><span>Submittals and samples approved before ordering.</span></div><div><b>Signed handover</b><span>Snags closed, certificate signed, as-built pack delivered.</span></div></div>
+  </div>
+</section>
+
+<section id="contact" class="scr wm opener" data-w="proof" data-time="Makkah" style="background:radial-gradient(1200px 700px at 85% 30%,rgba(213,167,104,.22),transparent 60%),repeating-linear-gradient(45deg,rgba(213,167,104,.05) 0 1px,transparent 1px 28px),#0E0F11">
+  <div class="veil" style="background:linear-gradient(95deg,rgba(14,15,17,.95) 0%,rgba(14,15,17,.75) 50%,rgba(14,15,17,.3) 100%)"></div>
+  <div class="in" style="max-width:1200px">
+    <img src="img/enjazat-brand-ivory.svg" alt="ENJAZAT" style="height:180px;align-self:flex-start;margin-bottom:34px">
+    <h2 style="font-size:clamp(40px,4.4vw,72px)">Any hour. One team.</h2>
+    <p class="pr" style="margin-top:12px">Enjazat Al Mamlakah for General Contracting · Makkah, Kingdom of Saudi Arabia</p>
+    <div class="contact"><div><span>Head office</span><b>Makkah, Kingdom of Saudi Arabia</b></div><div><span>Email</span><b><a href="mailto:info@enjazatksa.com" style="color:inherit">info@enjazatksa.com</a></b></div><div><span>Projects</span><b>Omar Howari · Projects Manager</b></div><div><span>Phone</span><b><a href="tel:+966591687834" style="color:inherit">+966 59 168 7834</a></b></div><div><span>Projects email</span><b><a href="mailto:omarhowari@enjazatksa.com" style="color:inherit">omarhowari@enjazatksa.com</a></b></div><div><span>Web</span><b>www.enjazatksa.com</b></div></div>
+  </div>
+</section>
+
+<footer>ENJAZAT AL MAMLAKAH FOR GENERAL CONTRACTING · Makkah · Company profile 2026 · Project photographs are Enjazat's own finished work, colour-graded only. Design proposals appear only in the Design studio chapter. The cover image is a design proposal from our studio. The Fit-Out opener image is courtesy of ATQ Interiors, UAE.</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar'),clock=document.getElementById('clock'),label=clock.querySelector('span');
+  var sun={arrival:'#D5A768',lobby:'#D5A768',proof:'#D5A768',gold:'#F5C27A',noon:'#C0392B',night:'#F0A040'};
+  var screens=[].slice.call(document.querySelectorAll('.scr'));
+  var links=[].slice.call(document.querySelectorAll('.bar nav a'));
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;var s=e.target,w=s.getAttribute('data-w');
+    document.body.className=(w==='noon'?'noon':'');
+    label.textContent=s.getAttribute('data-time')||'';
+    clock.style.setProperty('--sun',sun[w]||'#D5A768');
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('data-w')===w)});
+  })},{threshold:.5});
+  screens.forEach(function(s){io.observe(s)});
+  var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}})},{threshold:.15});
+  [].forEach.call(document.querySelectorAll('.reveal'),function(el){rv.observe(el)});
+  function onScroll(){
+    bar.classList.toggle('solid',window.scrollY>40);
+    var g=document.getElementById('gold'),n=document.getElementById('noon');
+    var start=g.offsetTop,end=n.offsetTop,y=window.scrollY,p=Math.max(0,Math.min(1,(y-start)/(end-start)));
+    [].forEach.call(document.querySelectorAll('.gold .glow'),function(el){
+      if(el.style.getPropertyValue('--sx'))return;
+      el.style.setProperty('--sx',(78-p*40)+'%');el.style.setProperty('--sy',(8+p*55)+'%');
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // heat test
+  var heat=document.getElementById('heat'),sd=document.getElementById('sunDot'),rays=document.getElementById('rays'),tS=document.getElementById('tSurf'),tR=document.getElementById('tRoom');
+  function setSun(x){var r=heat.getBoundingClientRect(),p=Math.max(0,Math.min(1,(x-r.left)/r.width));heat.style.setProperty('--sun',(p*100)+'%');
+    var h=Math.sin(p*Math.PI);heat.style.setProperty('--heat',(.15+h*.85).toFixed(2));tS.textContent=Math.round(32+h*40)+' °C';tR.textContent=Math.round(24+h*2)+' °C';}
+  heat.addEventListener('pointermove',function(e){setSun(e.clientX)});heat.addEventListener('pointerdown',function(e){setSun(e.clientX)});
+  (function(){var r=heat.getBoundingClientRect();setSun(r.left+r.width/2)})();
+  // systems
+  var S=[
+   {t:'Thermal insulation',d:'Roof and façade insulation that cuts the heat entering the building and the cooling load with it, installed while the building stays in use.',p:'Thickness and density checks; thermal-image inspection on request.',w:'Roofs, façades, plant rooms, cold stores.',L:[['Protection screed','#E9EBEE',34],['Insulation board','#C9CDD2',36],['Vapour control layer','#16181B',10],['Concrete slab','#8C9196',64]]},
+   {t:'Waterproofing',d:'Membrane and liquid systems for roofs, wet areas, tanks and basements, detailed at every upstand, drain and joint where leaks begin.',p:'48-hour flood test and adhesion test, recorded and signed.',w:'Roofs, bathrooms, kitchens, water tanks, basements.',L:[['Tiles / screed','#E9EBEE',30],['Protection board','#C9CDD2',14],['Waterproofing membrane','#16181B',14],['Primer','#B5442A',8],['Concrete slab','#8C9196',64]]},
+   {t:'Concrete repair & rehabilitation',d:'Crack injection, spalling repair and protective coatings that restore structural concrete and keep the building in service instead of rebuilding it.',p:'Before/after survey, mortar strength and coating thickness records.',w:'Car parks, tanks, slabs, columns, façades.',L:[['Protective coating','#B5442A',10],['Repair mortar','#C9CDD2',30],['Bonding primer','#16181B',8],['Treated reinforcement','#8C9196',14],['Sound concrete','#7A7F86',60]]},
+   {t:'Coatings, marking & paving',d:'Epoxy and polyurethane floors, parking and apron markings, asphalt paving and reinstatement, finished to clean lines and the right slip resistance.',p:'Dry-film thickness, slip-resistance and line-dimension checks.',w:'Car parks, warehouses, airside aprons, roads.',L:[['Line marking','#F2C230',8],['Floor coating','#E9EBEE',14],['Primer','#B5442A',6],['Base / asphalt','#3A3D42',44],['Sub-base','#8C9196',40]]}];
+  var tabs=[].slice.call(document.querySelectorAll('.tabs button')),L=document.getElementById('sysL');
+  function showSys(i){var s=S[i];tabs.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-selected',k===i)});
+    L.innerHTML='';s.L.forEach(function(l){var d=document.createElement('div');d.className='l';d.style.height=Math.max(20,l[2])+'px';d.style.fontSize=(l[2]<20?'11px':'13px');d.style.background=l[1];d.style.color=(l[1]=='#16181B'||l[1]=='#3A3D42'||l[1]=='#7A7F86'||l[1]=='#8C9196'||l[1]=='#B5442A')?'#fff':'#16181B';d.textContent=l[0];L.appendChild(d)});
+    document.getElementById('sysT').textContent=s.t;document.getElementById('sysD').textContent=s.d;document.getElementById('sysP').textContent=s.p;document.getElementById('sysW').textContent=s.w;}
+  tabs.forEach(function(b,i){b.addEventListener('click',function(){showSys(i)})});showSys(0);
+  // systems map
+  var N=[['Project management','One project manager, one programme and one set of approved documents from survey to handover.'],
+   ['Building services','Electrical, HVAC, plumbing, lighting and fire-alarm works coordinated above every ceiling.'],
+   ['IT & low current','Structured cabling, networks and Wi-Fi, CCTV and access control, designed with the fit-out.'],
+   ['Testing & commissioning','Every circuit, system and network point tested and recorded before handover.'],
+   ['Handover & documents','Certificate, as-built drawings, manuals and warranties in one pack.'],
+   ['Facility management','Preventive and reactive maintenance with a report for every visit.']];
+  var bld=document.getElementById('bld'),chips=[].slice.call(document.querySelectorAll('#chips button')),lays=[].slice.call(bld.querySelectorAll('.lay')),ni=document.getElementById('nodeInfo'),pb=document.getElementById('progBar'),clk=document.getElementById('bldClock'),cur=0,auto=true,t0=Date.now();
+  var times=['02:12 AM','02:14 AM','02:17 AM','02:21 AM','02:26 AM','02:30 AM'];
+  function showN(i){cur=i;chips.forEach(function(c,k){c.classList.toggle('on',k===i)});lays.forEach(function(l,k){l.classList.toggle('on',k===i)});ni.querySelector('h4').textContent=N[i][0];ni.querySelector('p').textContent=N[i][1];clk.textContent=times[i];t0=Date.now();}
+  chips.forEach(function(c,i){c.addEventListener('click',function(){auto=false;bld.classList.remove('all');pb.style.width='0';showN(i)})});
+  showN(0);setInterval(function(){if(!auto)return;var p=(Date.now()-t0)/4200;pb.style.width=Math.min(100,(cur+Math.min(1,p))/6*100)+'%';if(p>=1){if(cur===5){bld.classList.add('all');lays.forEach(function(l){l.classList.add('on')});auto=false;pb.style.width='100%';ni.querySelector('h4').textContent='One team, every system';ni.querySelector('p').textContent='Designed, built, tested, handed over and maintained by the same people, so nothing falls between contracts.';return}showN(cur+1)}},120);
+  var itp=document.getElementById('itplan'),flays=[].slice.call(itp.querySelectorAll('.flay')),itb=[].slice.call(document.querySelectorAll('.itcards button'));
+  itp.classList.add('all');flays.forEach(function(l){l.classList.add('on')});
+  itb.forEach(function(b,i){b.addEventListener('click',function(){var on=b.classList.contains('on');itb.forEach(function(x){x.classList.remove('on')});flays.forEach(function(l){l.classList.remove('on')});if(on){itp.classList.add('all');flays.forEach(function(l){l.classList.add('on')})}else{itp.classList.remove('all');b.classList.add('on');flays[i].classList.add('on')}})});
+
+  var sl=document.getElementById('slider');
+  function setCut(x){var r=sl.getBoundingClientRect();sl.style.setProperty('--cut',Math.max(0,Math.min(100,(x-r.left)/r.width*100))+'%')}
+  sl.addEventListener('pointermove',function(e){if(e.buttons||e.pointerType==='mouse')setCut(e.clientX)});
+  sl.addEventListener('pointerdown',function(e){setCut(e.clientX)});
+})();
+</script>
+<script>
+(function(){var names={arrival:'Welcome',lobby:'Who we are',gold:'Renovation & Fit-Out',noon:'Specialist Solutions',night:'Engineering Solutions',proof:'Clients · Quality · Contact'};
+var ss=[].slice.call(document.querySelectorAll('section.scr'));var N=ss.length;
+ss.forEach(function(s,i){if(s.id==='cover')return;
+ if(s.classList.contains('wm')){var w=document.createElement('img');w.className='wmk';w.src='img/enjazat-mark-ivory.svg';w.alt='';s.insertBefore(w,s.firstChild);}
+ var f=document.createElement('div');f.className='folio';f.innerHTML='<img src="img/enjazat-mark-ivory.svg" alt=""><span>ENJAZAT · Company Profile 2026</span><span class="sp"></span><span>'+(names[s.dataset.w]||'')+'</span><span>'+String(i+1).padStart(2,'0')+' / '+N+'</span>';s.appendChild(f);});})();
+</script>
+</body>
+</html>
